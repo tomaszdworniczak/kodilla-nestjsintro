@@ -19,3 +19,11 @@ export const arrayToDate = (array: Array<number>): Date => {
         array[5],
     );
 };
+
+export const arrayToBirthDate = (array: Array<number>): Date => {
+    return new Date(
+        array[0],
+        array[1] - 1 ,
+        array[2],
+    );
+};
