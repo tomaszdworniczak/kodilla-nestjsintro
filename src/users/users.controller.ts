@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, HttpCode, Param, Post, Put} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpCode, Param, ParseUUIDPipe, Post, Put} from '@nestjs/common';
 import {UsersDataService} from "./users-data.service";
 import {User} from "./interfaces/user.interface";
 import {ExternalUserDto} from "./dto/external-user.dto";
@@ -11,7 +11,7 @@ export class UsersController {
     }
 
     @Get(':id')
-    getUserById(@Param('id') _id_: string): ExternalUserDto {
+    getUserById(@Param('id', new ParseUUIDPipe({ version: '4' })) _id_: string): ExternalUserDto {
         return this.mapUserToExternal(this.usersRepository.getUserById(_id_));
     }
 
@@ -32,7 +32,7 @@ export class UsersController {
     }
 
     @Put(':id')
-    updateProduct(@Param('id') _id_: string, @Body() user: UserDto): ExternalUserDto {
+    updateProduct(@Param('id', new ParseUUIDPipe({ version: '4' })) _id_: string, @Body() user: UserDto): ExternalUserDto {
         return this.mapUserToExternal(this.usersRepository.updateUser(_id_, user));
     }
 

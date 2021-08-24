@@ -1,8 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 import {User} from "./interfaces/user.interface";
-import {nanoid} from "nanoid";
 import {UserDto} from "./dto/user.dto";
-import {arrayToDate} from "../shared/date.helpers";
+import {v4 as uuidv4} from 'uuid';
 
 @Injectable()
 export class UsersDataService {
@@ -28,7 +27,6 @@ export class UsersDataService {
                 return {
                     ...dto,
                     id: i.id,
-                    dateOfBirth: arrayToDate(dto.dateOfBirth),
                 };
             }
             return i;
@@ -47,7 +45,6 @@ export class UsersDataService {
 function dtoToEntity(dto: UserDto): User {
     return {
         ...dto,
-        id: nanoid(10),
-        dateOfBirth: arrayToDate(dto.dateOfBirth),
+        id: uuidv4(),
     }
 }

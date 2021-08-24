@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import {Product} from "./interfaces/product.interface";
 import {ProductDto} from "./dto/product.dto";
-import {nanoid} from "nanoid";
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class ProductsDataService {
@@ -47,7 +47,7 @@ export class ProductsDataService {
 function dtoToEntity(dto: ProductDto): Product {
     return {
         ...dto,
-        id: nanoid(10),
+        id: uuidv4(),
         createdAt: new Date(),
         updatedAt: new Date(),
     }
