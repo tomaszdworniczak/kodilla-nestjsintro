@@ -4,10 +4,11 @@ import {User} from "./interfaces/user.interface";
 import {ExternalUserDto} from "./dto/external-user.dto";
 import {UserDto} from "./dto/user.dto";
 import {dateToArray} from "../shared/date.helpers";
+import {UserValidatorService} from "./user-validator.service";
 
 @Controller('users')
 export class UsersController {
-    constructor(private usersRepository: UsersDataService) {
+    constructor(private usersRepository: UsersDataService, private userValidatorService: UserValidatorService) {
     }
 
     @Get(':id')
@@ -17,6 +18,7 @@ export class UsersController {
 
     @Post()
     addUser(@Body() _user_: UserDto): ExternalUserDto {
+        this.userValidatorService.validateUniqueEmail(_user_.email);
         return this.mapUserToExternal(this.usersRepository.addUser(_user_));
     }
 
@@ -32,7 +34,7 @@ export class UsersController {
     }
 
     @Put(':id')
-    updateProduct(@Param('id', new ParseUUIDPipe({ version: '4' })) _id_: string, @Body() user: UserDto): ExternalUserDto {
+    updateUser(@Param('id', new ParseUUIDPipe({ version: '4' })) _id_: string, @Body() user: UserDto): ExternalUserDto {
         return this.mapUserToExternal(this.usersRepository.updateUser(_id_, user));
     }
 

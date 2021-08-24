@@ -14,7 +14,7 @@ export class UsersDataService {
     }
 
     getUserById(id: string): User {
-        return this.users.find(product => product.id = id);
+        return this.users.find(user => user.id = id);
     }
 
     getAllUsers(): Array<User> {
@@ -39,6 +39,10 @@ export class UsersDataService {
         if (user) {
             this.users = this.users.filter(item => item.id != id);
         }
+    }
+
+    getUserByEmail(email: string): User {
+        return this.users.find(user => user.email === email);
     }
 }
 
