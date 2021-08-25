@@ -1,4 +1,4 @@
-import {Roles} from "../enums/roles.enum";
+import {Roles} from "../../shared/enums/roles.enum";
 import {UserAddressDto} from "./user-address.dto";
 import {IsEmail, IsEnum, IsNotEmpty, ValidateNested} from "class-validator";
 import {Transform, Type} from "class-transformer";

@@ -1,5 +1,5 @@
 import {UserAddress} from "../interfaces/user-address.interface";
-import {Roles} from "../enums/roles.enum";
+import {Roles} from "../../shared/enums/roles.enum";
 
 export interface ExternalUserDto {
     id?: string;
