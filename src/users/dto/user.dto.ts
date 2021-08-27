@@ -1,8 +1,8 @@
 import {Roles} from "../../shared/enums/roles.enum";
-import {UserAddressDto} from "./user-address.dto";
 import {IsEmail, IsEnum, IsNotEmpty, ValidateNested} from "class-validator";
 import {Transform, Type} from "class-transformer";
 import {arrayToDate} from "../../shared/date.helpers";
+import {UserAddress} from "../db/user-address.entity";
 
 export class UserDto {
     @IsNotEmpty()
@@ -19,8 +19,8 @@ export class UserDto {
     dateOfBirth: Date;
 
     @ValidateNested({ each: true })
-    @Type(() => UserAddressDto)
-    address?: Array<UserAddressDto>;
+    @Type(() => UserAddress)
+    address?: Array<UserAddress>;
 
     @IsEnum(Roles)
     role: Roles;

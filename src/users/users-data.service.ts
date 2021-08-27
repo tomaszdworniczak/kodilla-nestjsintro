@@ -1,7 +1,7 @@
 import {Injectable} from '@nestjs/common';
-import {User} from "./interfaces/user.interface";
 import {UserDto} from "./dto/user.dto";
 import {v4 as uuidv4} from 'uuid';
+import {User} from "./db/users.entity";
 
 @Injectable()
 export class UsersDataService {

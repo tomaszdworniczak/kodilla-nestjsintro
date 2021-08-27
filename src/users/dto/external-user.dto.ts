@@ -1,5 +1,5 @@
-import {UserAddress} from "../interfaces/user-address.interface";
 import {Roles} from "../../shared/enums/roles.enum";
+import {UserAddress} from "../db/user-address.entity";
 
 export interface ExternalUserDto {
     id?: string;

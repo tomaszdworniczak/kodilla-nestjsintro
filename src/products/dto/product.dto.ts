@@ -1,5 +1,5 @@
-import {Tags} from "../enums/tags.enum";
 import {IsArray, IsEnum, IsNotEmpty, IsNumber, MaxLength, Min, MinLength} from "class-validator";
+import {Tag} from "../db/tags.entity";
 
 export class ProductDto {
     @IsNotEmpty()
@@ -18,6 +18,6 @@ export class ProductDto {
     count: number;
 
     @IsArray()
-    @IsEnum(Tags, { each: true })
-    tags: Array<Tags>;
+    @IsEnum(Tag, { each: true })
+    tags: Tag[];
 }

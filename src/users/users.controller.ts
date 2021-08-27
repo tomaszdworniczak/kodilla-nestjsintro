@@ -1,10 +1,10 @@
 import {Body, Controller, Delete, Get, HttpCode, Param, ParseUUIDPipe, Post, Put} from '@nestjs/common';
 import {UsersDataService} from "./users-data.service";
-import {User} from "./interfaces/user.interface";
 import {ExternalUserDto} from "./dto/external-user.dto";
 import {UserDto} from "./dto/user.dto";
 import {dateToArray} from "../shared/date.helpers";
 import {UserValidatorService} from "./user-validator.service";
+import {User} from "./db/users.entity";
 
 @Controller('users')
 export class UsersController {
